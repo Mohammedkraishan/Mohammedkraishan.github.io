@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Construction Project Assistant | Mohammed Kraishan</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: #d2d2d7;
+      --accent: #0071e3;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    nav {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    nav a:hover, .project-link:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 70px 24px 100px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 12px 0 20px;
+    }
+
+    h2 {
+      font-size: 25px;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+    }
+
+    p { color: var(--muted); }
+
+    .intro {
+      font-size: 19px;
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 24px;
+    }
+
+    .screenshot {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .screenshot-label {
+      margin-top: 25px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 13px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button:hover {
+      background: #005bb5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --border: #38383a;
+        --accent: #2997ff;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 45px; }
+      .card { padding: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html">Mohammed Kraishan</a>
+      <a href="index.html#projects">← All Projects</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="eyebrow">Featured Project · 01</div>
+    <h1>Construction Project Assistant</h1>
+    <p class="intro">
+      A prototype application designed to support construction
+      project management and inspection activities.
+    </p>
+
+    <a class="button"
+       href="https://construction-project-assistant.lovable.app"
+       target="_blank" rel="noopener noreferrer">
+      View Live Demonstration ↗
+    </a>
+
+    <section class="card">
+      <h2>Project Screenshots</h2>
+
+      <p class="screenshot-label">
+        Construction Project Assistant Dashboard
+      </p>
+      <img class="screenshot"
+           src="Screenshot%201.png"
+           alt="Construction Project Assistant Dashboard">
+
+      <p class="screenshot-label">Inspection Report</p>
+      <img class="screenshot"
+           src="Screenshot%202.png"
+           alt="Construction Inspection Report">
+    </section>
+
+    <section class="card">
+      <h2>Description</h2>
+      <p>
+        The application includes project tracking, inspection
+        report drafting, scheduling, and follow-up activities.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Objective</h2>
+      <p>
+        To explore how AI-assisted application development can
+        improve construction project management workflows.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Process</h2>
+      <p>
+        I identified construction management challenges,
+        designed a prototype, and tested features such as
+        scheduling conflicts and inspection report preparation.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Tools and Technologies Used</h2>
+      <p>
+        Lovable, AI-assisted development, and web technologies.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Value Proposition</h2>
+      <p>
+        This project demonstrates how my construction engineering
+        experience can help me identify practical opportunities
+        for AI applications.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>References</h2>
+      <p>Project documentation and references can be added here.</p>
+    </section>
+  </main>
+
+</body>
+</html>
