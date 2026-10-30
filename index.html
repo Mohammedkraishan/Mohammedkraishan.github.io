@@ -4,137 +4,543 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mohammed Kraishan | Professional Portfolio</title>
+  <meta name="description" content="Professional portfolio of Mohammed Kraishan, focusing on data analytics, artificial intelligence, and practical technology projects.">
+  <title>Mohammed Kraishan | Data & AI Portfolio</title>
   <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: #d2d2d7;
+      --accent: #0071e3;
+      --soft: #e8f2ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      max-width: 900px;
-      margin: auto;
-      padding: 30px;
-      color: #243247;
-      background: #f8fafc;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      background: #183153;
+
+    a { color: var(--accent); }
+
+    .container {
+      width: min(100% - 40px, 1120px);
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 650;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero {
+      text-align: center;
+      padding: 110px 0 100px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      margin: 20px auto;
+      max-width: 950px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      max-width: 720px;
+      margin: 0 auto 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
       color: white;
-      padding: 35px;
-      border-radius: 12px;
     }
-    section {
-      background: white;
-      padding: 25px;
-      margin-top: 20px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
+
+    .button-primary:hover {
+      background: #005bb5;
+      transform: translateY(-2px);
     }
-    h2 { color: #183153; }
-    a { color: #1463a5; }
-    header a { color: white; }
+
+    .button-secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-left: 10px;
+    }
+
+    .button-secondary:hover {
+      background: var(--surface);
+    }
+
+    .section { padding: 75px 0; }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      margin: 0 0 18px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 0 30px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .card p { color: var(--muted); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card h3 { margin-top: 0; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      display: block;
+      overflow: hidden;
+      padding: 0;
+      color: inherit;
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0,0,0,.07);
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-body { padding: 28px; }
+
+    .project-label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .project-body h3 {
+      font-size: 24px;
+      letter-spacing: -.02em;
+      margin: 12px 0;
+    }
+
+    .project-body p { margin: 0 0 18px; }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .education-list p {
+      margin: 12px 0;
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 35px 20px;
+      font-size: 13px;
+    }
+
+    section[id] { scroll-margin-top: 85px; }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --border: #38383a;
+        --accent: #2997ff;
+        --soft: #15283d;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-inner {
+        flex-direction: column;
+        padding: 14px 0;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero { padding: 70px 0; }
+      .section { padding: 48px 0; }
+
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card { padding: 24px; }
+      .project-card { padding: 0; }
+
+      section[id] { scroll-margin-top: 130px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Mohammed Kraishan</h1>
-    <p>Civil Engineering | Artificial Intelligence | Data Analytics</p>
-    <p>Professional Portfolio</p>
-  </header>
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">Mohammed Kraishan</a>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I have a background in civil engineering and am currently
-      pursuing a master's degree in AI and Data Analytics.
-      I am developing practical skills in artificial intelligence,
-      programming, and data-driven problem solving.
-    </p>
-  </section>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <section>
-    <h2>Education</h2>
-    <p>Master's in AI and Data Analytics — In Progress</p>
-    <p>Bachelor's Degree in Civil Engineering</p>
-  </section>
+  <main>
 
-  <section>
-    <h2>Skills</h2>
-    <p>
-      Civil Engineering, Construction Project Management,
-      Data Analytics, AI Applications, Problem Solving,
-      and Stakeholder Communication.
-    </p>
-  </section>
+    <header class="hero container" id="home">
+      <div class="eyebrow">
+        Data Analytics · Artificial Intelligence
+      </div>
 
-  <section>
-    <h2>Projects</h2>
-    <h3>Construction Project Assistant</h3>
+      <h1>
+        Turning Data into Meaningful Insights.
+      </h1>
 
-    <h4>Introduction</h4>
-    <p>
-      A prototype application designed to support construction
-      project management and inspection activities.
-    </p>
-<h4>Project Screenshots</h4>
+      <p>
+        Aspiring Data Analyst and AI graduate student with
+        experience in data quality assurance, engineering,
+        and analytical problem-solving.
+      </p>
 
-<p>Construction Project Assistant Dashboard</p>
-<img src="Screenshot%201.png"
-     alt="Construction Project Assistant Dashboard"
-     style="width:100%; border-radius:8px;">
-
-<p>Inspection Report</p>
-<img src="Screenshot%202.png"
-     alt="Construction Inspection Report"
-     style="width:100%; border-radius:8px;">
-    <h4>Description</h4>
-    <p>
-      The application includes project tracking, inspection
-      report drafting, scheduling, and follow-up activities.
-    </p>
-
-    <h4>Objective</h4>
-    <p>
-      To explore how AI-assisted application development can
-      improve construction project management workflows.
-    </p>
-
-    <h4>Process</h4>
-    <p>
-      I identified construction management challenges,
-      designed a prototype, and tested features such as
-      scheduling conflicts and inspection report preparation.
-    </p>
-
-    <h4>Tools and Technologies Used</h4>
-    <p>Lovable, AI-assisted development, and web technologies.</p>
-
-    <h4>Value Proposition</h4>
-    <p>
-      This project demonstrates how my construction engineering
-      experience can help me identify practical opportunities
-      for AI applications.
-    </p>
-
-    <h4>Project Demonstration</h4>
-    <p>
-      <a href="https://construction-project-assistant.lovable.app"
-         target="_blank" rel="noopener noreferrer">
-        View Construction Project Assistant
+      <a class="button button-primary" href="#projects">
+        Explore Projects
       </a>
-    </p>
 
-    <h4>References</h4>
-    <p>Project documentation and references can be added here.</p>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <p>
-      <a href="https://github.com/Mohammedkraishan">
-        My GitHub Profile
+      <a class="button button-secondary" href="#about">
+        About Me
       </a>
-    </p>
-  </section>
+    </header>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="card">
+          <p>
+            I am a professional with experience in data
+            quality assurance, project engineering, and
+            quality control, currently pursuing a Master's
+            degree in Artificial Intelligence – Data Analytics
+            at Indiana Wesleyan University.
+          </p>
+
+          <p>
+            My background includes data validation, data
+            cleaning, analytical problem-solving, and project
+            coordination. I am developing my skills in Python,
+            SQL, and machine learning while building practical
+            projects that demonstrate how data and AI can
+            support better decision-making.
+          </p>
+
+          <p>
+            My goal is to begin my career in Data Analytics
+            and AI, applying my professional experience and
+            growing technical knowledge to solve real-world
+            business challenges.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+
+        <p class="section-intro">
+          A combination of practical data quality experience,
+          technical learning, and AI application development.
+        </p>
+
+        <div class="skills-grid">
+
+          <div class="card skill-card">
+            <h3>Data Analytics & Quality</h3>
+            <div class="tags">
+              <span class="tag">Microsoft Excel</span>
+              <span class="tag">Data Cleaning</span>
+              <span class="tag">Data Validation</span>
+              <span class="tag">Quality Assurance</span>
+              <span class="tag">Reporting</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Programming</h3>
+            <div class="tags">
+              <span class="tag">Python · Learning</span>
+              <span class="tag">SQL · Learning</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>AI & Machine Learning</h3>
+            <div class="tags">
+              <span class="tag">AI-Assisted Development</span>
+              <span class="tag">ML Fundamentals</span>
+              <span class="tag">Model Selection</span>
+              <span class="tag">Prompt Design</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Engineering & Operations</h3>
+            <div class="tags">
+              <span class="tag">Project Coordination</span>
+              <span class="tag">Quality Control</span>
+              <span class="tag">Construction Inspection</span>
+              <span class="tag">Problem-Solving</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <p class="section-intro">
+          Selected work demonstrating practical AI applications
+          and analytical problem-solving.
+        </p>
+
+        <div class="projects-grid">
+
+          <a class="card project-card"
+             href="construction-assistant.html">
+
+            <img class="project-image"
+                 src="Screenshot%201.png"
+                 alt="Construction Project Assistant dashboard"
+                 loading="lazy">
+
+            <div class="project-body">
+              <div class="project-label">
+                Featured Project · 01
+              </div>
+
+              <h3>Construction Project Assistant</h3>
+
+              <p>
+                An AI-assisted application prototype for
+                construction inspection documentation,
+                scheduling, and project tracking.
+              </p>
+
+              <span class="project-link">
+                View Case Study ↗
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+
+        <div class="card education-list">
+          <h3>Master of Science in Artificial Intelligence – Data Analytics</h3>
+          <p>
+            Indiana Wesleyan University · Expected April 2028
+          </p>
+
+          <h3>Certificate in Construction Management Technology</h3>
+          <p>Houston Community College · May 2025</p>
+
+          <h3>Bachelor of Science in Civil Engineering</h3>
+          <p>Girne American University · August 2019</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card">
+          <p>
+            Connect with me through GitHub, LinkedIn,
+            or email.
+          </p>
+
+          <div class="contact-links">
+            <a href="https://github.com/Mohammedkraishan"
+               target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+
+            <a href="https://www.linkedin.com/in/mohammedkraishan"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+
+            <a href="mailto:MohammedKraishan@gmail.com">
+              Email ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Mohammed Kraishan. Professional Portfolio.
+  </footer>
 
 </body>
 </html>
